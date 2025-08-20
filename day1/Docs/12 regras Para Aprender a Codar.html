@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Regras para Aprender a Codar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            color: #333;
+        }
+        .presentation-container {
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1000px;
+            min-height: 600px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        .slide.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .slide-content {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            max-width: 700px;
+            color: #555;
+        }
+        .navigation-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 10px;
+        }
+        .navigation-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        .navigation-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        .pagination-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .dot.active {
+            background-color: #3498db;
+            transform: scale(1.2);
+        }
+        .footer-logo {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .header-title {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-container {
+                width: 95%;
+                padding: 20px;
+                min-height: 500px;
+            }
+            .slide-title {
+                font-size: 2rem;
+            }
+            .slide-content {
+                font-size: 1rem;
+            }
+            .navigation-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                margin: 0 5px;
+            }
+            .header-title, .footer-logo {
+                font-size: 0.8rem;
+                position: static; /* Adjust for mobile */
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="header-title">App Brewery</div>
+
+        <div id="slides-container">
+            <div class="slide active">
+                <h1 class="slide-title">12 Regras para Aprender a Codar</h1>
+                <p class="slide-content">Tudo o que aprendemos ensinando 150.000 alunos.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 1: Engane seu Cérebro com a Regra dos 20 Minutos 🧠</h2>
+                <p class="slide-content">Comece com apenas 20 minutos de codificação. A inércia fará com que você continue por mais tempo. Desenvolva o hábito de forma consistente.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 2: Codifique com um Propósito. Tenha um Projeto 🎯</h2>
+                <p class="slide-content">Aprender a codificar pelo simples fato de aprender é difícil. Crie algo que você possa usar e se divertir. A criação é a maior motivação!</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 3: Não Existe uma "Linguagem Perfeita para Aprender" 🛠️</h2>
+                <p class="slide-content">Uma linguagem de programação é uma ferramenta. Escolha a ferramenta certa para a tarefa que você deseja realizar. Os conceitos de programação são universais.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 4: Entenda o que Você Está Escrevendo 🤔</h2>
+                <p class="slide-content">Evite tutoriais que pulam etapas ou não explicam o código. Construa uma base sólida de conhecimento. O aprendizado é sobre progressão gradual.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 5: Tudo Bem Não Saber 🤷</h2>
+                <p class="slide-content">Não tenha medo de pesquisar, pedir ajuda no Stack Overflow ou usar referências. Os melhores programadores fazem isso. A habilidade mais valiosa é a capacidade de pensar e resolver problemas.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 6: Seja um Imitador 🐒</h2>
+                <p class="slide-content">Sem ideias? Copie! Recrie aplicativos existentes como um bloco de notas ou um jogo. Isso te dará experiência prática e o ajudará a encontrar ajuda facilmente.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 7: Seja Responsável com Alguém. Mostre Seu Trabalho 🤝</h2>
+                <p class="slide-content">A falta de responsabilidade é um problema comum. Encontre um parceiro de codificação, participe de grupos ou invista financeiramente para se motivar. Busque avaliações para feedback objetivo.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 8: Continue Aprendendo 📚</h2>
+                <p class="slide-content">A programação está em constante evolução. Mantenha-se relevante aprendendo novas tecnologias e linguagens. Não seja o "drive óptico" do mundo da programação!</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 9: Jogue Pebolim (ou faça outra coisa) 🧘</h2>
+                <p class="slide-content">Se você está travado em um bug, afaste-se do código. Durma, jogue, caminhe. A solução geralmente se tornará óbvia. Codifique menos, pense mais.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 10: Consiga um Mentor - Tente Programação em Par 🧑‍💻</h2>
+                <p class="slide-content">Um mentor pode oferecer anos de sabedoria em poucas horas. Eles não resolvem seus problemas, mas fazem as perguntas certas para você pensar. Troque sua experiência pela deles.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 11: Adquira o Hábito de Dividir em Pedaços (Chunking) 🍕</h2>
+                <p class="slide-content">Idéias de aplicativos grandes demais? Divida o problema em "pedaços" menores e mais gerenciáveis. Quanto menor o pedaço, mais fácil de resolver.</p>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Regra 12: Quebre o Código de Outra Pessoa 💥</h2>
+                <p class="slide-content">Copie um código que resolve seu problema, faça-o funcionar, e então comece a deletar linha por linha para entender o que cada parte faz. Depois, explore o GitHub para engenharia reversa de projetos pequenos.</p>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-auto py-5">
+            <button id="prevBtn" class="navigation-button">Anterior</button>
+            <div id="pagination" class="pagination-dots"></div>
+            <button id="nextBtn" class="navigation-button">Próximo</button>
+        </div>
+
+        <div class="footer-logo">www.appbrewery.co</div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const pagination = document.getElementById('pagination');
+        let currentSlide = 0;
+
+        // Função para mostrar o slide atual
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+            updateNavigation();
+            updatePaginationDots();
+        }
+
+        // Função para atualizar os botões de navegação
+        function updateNavigation() {
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        // Função para criar e atualizar os pontos de paginação
+        function updatePaginationDots() {
+            pagination.innerHTML = ''; // Limpa os pontos existentes
+            slides.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    showSlide(currentSlide);
+                });
+                pagination.appendChild(dot);
+            });
+        }
+
+        // Event Listeners para os botões
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Inicializa a apresentação
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
+
