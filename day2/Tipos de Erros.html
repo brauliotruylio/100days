@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Erros em Python</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Fundo escuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            color: #e0e0e0; /* Texto claro padrão */
+        }
+        .container {
+            background-color: #2b2b2b; /* Fundo do container ligeiramente mais claro que o body */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra mais visível no escuro */
+            border-radius: 12px;
+            width: 95%;
+            max-width: 1400px;
+            padding: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #3a3a3a; /* Borda sutil */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #444; /* Linha divisória mais clara */
+        }
+        .header-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #e74c3c; /* Vermelho vibrante para o título principal */
+            margin-bottom: 10px;
+        }
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: #bbbbbb; /* Subtítulo mais claro */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .category-card {
+            background-color: #363636; /* Fundo do card escuro */
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para cards */
+            border: 1px solid #4a4a4a; /* Borda do card */
+            display: flex;
+            flex-direction: column;
+        }
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #3498db; /* Azul vibrante para títulos de categoria */
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db; /* Linha divisória da categoria */
+            padding-bottom: 8px;
+        }
+        .error-item {
+            margin-bottom: 15px;
+        }
+        .error-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #f1c40f; /* Amarelo/laranja para o nome do erro */
+            margin-bottom: 5px;
+        }
+        .error-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #d0d0d0; /* Descrição mais clara */
+            margin-bottom: 8px;
+        }
+        .code-block {
+            background-color: #2c3e50; /* Fundo do bloco de código azul escuro */
+            color: #a2e88b; /* Cor do texto do código verde claro */
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: 'Cascadia Code', 'Fira Code', 'Monaco', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid #4a6a8a; /* Borda do bloco de código */
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #aaaaaa; /* Texto do rodapé mais claro */
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .header-title {
+                font-size: 2rem;
+            }
+            .header-subtitle {
+                font-size: 0.9rem;
+            }
+            .category-title {
+                font-size: 1.5rem;
+            }
+            .error-name {
+                font-size: 1.1rem;
+            }
+            .error-description {
+                font-size: 0.85rem;
+            }
+            .code-block {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header-title">🛑 Tipos de Erros e Exceções em Python</h1>
+            <p class="header-subtitle">Um mapa completo para entender e depurar seu código.</p>
+        </header>
+
+        <div class="grid-container">
+
+            <!-- Categoria: Raiz da Hierarquia -->
+            <div class="category-card">
+                <h2 class="category-title">Raiz da Hierarquia</h2>
+                <div class="error-item">
+                    <div class="error-name">BaseException</div>
+                    <div class="error-description">A base para todas as exceções em Python. Raramente é capturada diretamente.</div>
+                    <div class="code-block">raise BaseException("erro base")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">SystemExit</div>
+                    <div class="error-description">Gerada por <code>sys.exit()</code> para terminar o programa.</div>
+                    <div class="code-block">import sys; sys.exit(0)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">KeyboardInterrupt</div>
+                    <div class="error-description">Acontece quando o usuário interrompe a execução (ex: Ctrl+C).</div>
+                    <div class="code-block"># (Gerado ao pressionar Ctrl+C durante execução)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">GeneratorExit</div>
+                    <div class="error-description">Gerado quando um método <code>close()</code> de um gerador é chamado.</div>
+                    <div class="code-block">(g:= (yield for _ in [])); g.close()</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Base "Normal" -->
+            <div class="category-card">
+                <h2 class="category-title">Base "Normal"</h2>
+                <div class="error-item">
+                    <div class="error-name">Exception</div>
+                    <div class="error-description">A base para quase todas as exceções "normais" que você verá e capturará.</div>
+                    <div class="code-block">raise Exception("algo deu errado")</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Sintaxe & Compilação -->
+            <div class="category-card">
+                <h2 class="category-title">Sintaxe & Compilação</h2>
+                <div class="error-item">
+                    <div class="error-name">SyntaxError</div>
+                    <div class="error-description">Ocorre quando o interpretador Python encontra código que não é válido sintaticamente.</div>
+                    <div class="code-block">eval("if True print(1)")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">IndentationError</div>
+                    <div class="error-description">Erro de indentação incorreta no código, violando as regras do Python.</div>
+                    <div class="code-block">def f():\n  print(1)\nprint(2) # Linha com indentação inesperada</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">TabError</div>
+                    <div class="error-description">Acontece quando há uma mistura inconsistente de tabulações e espaços para indentação.</div>
+                    <div class="code-block"># (Arquivo com tabs+espaços misturados)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Execução & Estado -->
+            <div class="category-card">
+                <h2 class="category-title">Execução & Estado</h2>
+                <div class="error-item">
+                    <div class="error-name">RuntimeError</div>
+                    <div class="error-description">Um erro genérico que ocorre durante a execução do programa e não se encaixa em outra categoria específica.</div>
+                    <div class="code-block">raise RuntimeError("falha em runtime")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">NotImplementedError</div>
+                    <div class="error-description">Gerada por métodos abstratos em classes base ou funcionalidades que ainda não foram implementadas.</div>
+                    <div class="code-block">raise NotImplementedError("Funcionalidade em desenvolvimento")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">RecursionError</div>
+                    <div class="error-description">Ocorre quando a profundidade máxima de recursão do interpretador Python é excedida.</div>
+                    <div class="code-block">def f(): return f(); f()</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">SystemError</div>
+                    <div class="error-description">Erro interno do interpretador Python; muito raro e geralmente indica um problema grave.</div>
+                    <div class="code-block"># (Difícil de provocar intencionalmente)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Aserções -->
+            <div class="category-card">
+                <h2 class="category-title">Aserções</h2>
+                <div class="error-item">
+                    <div class="error-name">AssertionError</div>
+                    <div class="error-description">Gerada quando uma declaração <code>assert</code> falha, indicando que uma condição esperada não foi atendida.</div>
+                    <div class="code-block">assert 2 + 2 == 5, "2+2 não é 5"</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Nomes, Atributos e Referências -->
+            <div class="category-card">
+                <h2 class="category-title">Nomes, Atributos e Referências</h2>
+                <div class="error-item">
+                    <div class="error-name">NameError</div>
+                    <div class="error-description">Ocorre quando uma variável local ou global não é encontrada. Geralmente, por erro de digitação no nome.</div>
+                    <div class="code-block">print(x)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UnboundLocalError</div>
+                    <div class="error-description">Acontece quando uma variável local é referenciada antes de ser atribuída, especialmente em funções.</div>
+                    <div class="code-block">x = 1\ndef f():\n  print(x); x = 2\nf()</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">AttributeError</div>
+                    <div class="error-description">Gerada quando uma referência de atributo ou atribuição falha, indicando que um objeto não possui o atributo ou método.</div>
+                    <div class="code-block">"py".append(1)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ReferenceError</div>
+                    <div class="error-description">Ocorre quando uma referência fraca (weakref) a um objeto é usada, mas o objeto subjacente já foi coletado pelo garbage collector.</div>
+                    <div class="code-block"># (Uso avançado com weakref)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Tipos & Valores -->
+            <div class="category-card">
+                <h2 class="category-title">Tipos & Valores</h2>
+                <div class="error-item">
+                    <div class="error-name">TypeError</div>
+                    <div class="error-description">Gerada quando uma operação ou função é aplicada a um objeto de tipo inadequado.</div>
+                    <div class="code-block">"n=" + 1</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ValueError</div>
+                    <div class="error-description">Ocorre quando uma operação ou função recebe um argumento com o tipo correto, mas um valor inadequado.</div>
+                    <div class="code-block">int("abc")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UnicodeError</div>
+                    <div class="error-description">Base para erros relacionados a problemas de codificação ou decodificação Unicode.</div>
+                    <div class="code-block">b"\xff".decode("utf-8")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UnicodeDecodeError</div>
+                    <div class="error-description">Falha na decodificação de bytes em strings usando uma codificação Unicode.</div>
+                    <div class="code-block">b"\xff".decode("utf-8")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UnicodeEncodeError</div>
+                    <div class="error-description">Falha na codificação de strings em bytes usando uma codificação Unicode.</div>
+                    <div class="code-block">"á".encode("ascii")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UnicodeTranslateError</div>
+                    <div class="error-description">Erro de tradução de caracteres Unicode que não podem ser mapeados.</div>
+                    <div class="code-block"># (Casos específicos de tradução com codecs)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">BufferError</div>
+                    <div class="error-description">Gerada quando uma operação relacionada a buffer não pode ser realizada.</div>
+                    <div class="code-block"># (Raro; para APIs de buffer)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Numéricos -->
+            <div class="category-card">
+                <h2 class="category-title">Numéricos</h2>
+                <div class="error-item">
+                    <div class="error-name">ArithmeticError</div>
+                    <div class="error-description">Base para todos os erros que ocorrem durante cálculos aritméticos.</div>
+                    <div class="code-block">raise ArithmeticError("Erro aritmético genérico")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ZeroDivisionError</div>
+                    <div class="error-description">Acontece quando uma divisão ou operação de módulo por zero é tentada.</div>
+                    <div class="code-block">1 / 0</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">OverflowError</div>
+                    <div class="error-description">Ocorre quando o resultado de uma operação numérica é muito grande para ser representado.</div>
+                    <div class="code-block">import math; math.exp(1000)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">FloatingPointError</div>
+                    <div class="error-description">Gerada quando uma operação de ponto flutuante falha (raro sem configurações especiais, ex: NumPy).</div>
+                    <div class="code-block"># (Geralmente via NumPy com seterr('raise'))</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Coleções & Busca -->
+            <div class="category-card">
+                <h2 class="category-title">Coleções & Busca</h2>
+                <div class="error-item">
+                    <div class="error-name">LookupError</div>
+                    <div class="error-description">Base para erros que ocorrem quando uma busca ou indexação falha.</div>
+                    <div class="code-block">raise LookupError("Item não encontrado")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">IndexError</div>
+                    <div class="error-description">Acontece quando um índice de sequência (lista, tupla, string) está fora do intervalo válido.</div>
+                    <div class="code-block">[1, 2][5]</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">KeyError</div>
+                    <div class="error-description">Gerada quando uma chave de dicionário (dict) não é encontrada.</div>
+                    <div class="code-block">{"a": 1}["b"]</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Iteração -->
+            <div class="category-card">
+                <h2 class="category-title">Iteração</h2>
+                <div class="error-item">
+                    <div class="error-name">StopIteration</div>
+                    <div class="error-description">Sinaliza que um iterador não tem mais itens para produzir.</div>
+                    <div class="code-block">it = iter([1]); next(it); next(it)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">StopAsyncIteration</div>
+                    <div class="error-description">Sinaliza que um iterador assíncrono não tem mais itens.</div>
+                    <div class="code-block"># (Em iteradores assíncronos)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">EOFError</div>
+                    <div class="error-description">Ocorre quando a função <code>input()</code> atinge o fim de um arquivo (EOF) sem ler dados.</div>
+                    <div class="code-block"># (Ex: Pressionar Ctrl+D em input() no Linux)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Importação -->
+            <div class="category-card">
+                <h2 class="category-title">Importação</h2>
+                <div class="error-item">
+                    <div class="error-name">ImportError</div>
+                    <div class="error-description">Base para falhas na importação de módulos.</div>
+                    <div class="code-block">from math import nope</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ModuleNotFoundError</div>
+                    <div class="error-description">Subclasse de <code>ImportError</code>, ocorre quando um módulo não pode ser encontrado.</div>
+                    <div class="code-block">import modulo_que_nao_existe</div>
+                </div>
+            </div>
+
+            <!-- Categoria: I/O & SO (OSError e subtipos) -->
+            <div class="category-card">
+                <h2 class="category-title">I/O & SO (OSError e Subtipos)</h2>
+                <div class="error-item">
+                    <div class="error-name">OSError</div>
+                    <div class="error-description">Base para erros de sistema operacional, como problemas de arquivo ou rede.</div>
+                    <div class="code-block">open("/pasta/nao/existe")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">FileNotFoundError</div>
+                    <div class="error-description">Um arquivo ou diretório especificado não pôde ser encontrado.</div>
+                    <div class="code-block">open("x.txt") # se não existir</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">FileExistsError</div>
+                    <div class="error-description">Tentativa de criar um arquivo ou diretório que já existe.</div>
+                    <div class="code-block">import os; os.mkdir(".") # se já existir</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">PermissionError</div>
+                    <div class="error-description">Acesso negado devido a permissões insuficientes.</div>
+                    <div class="code-block">open("/root/segredo")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">IsADirectoryError</div>
+                    <div class="error-description">Uma operação em arquivo foi solicitada, mas o caminho é um diretório.</div>
+                    <div class="code-block">open(".")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">NotADirectoryError</div>
+                    <div class="error-description">Uma parte do caminho especificado não é um diretório.</div>
+                    <div class="code-block">open("arquivo/mais")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">BlockingIOError</div>
+                    <div class="error-description">Operação de I/O que seria bloqueante em um recurso configurado como não bloqueante.</div>
+                    <div class="code-block"># (I/O avançado)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">TimeoutError</div>
+                    <div class="error-description">Uma operação expirou seu tempo limite (ex: em sockets, subprocessos).</div>
+                    <div class="code-block"># (Sockets, subprocess, etc.)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ProcessLookupError</div>
+                    <div class="error-description">Ocorre quando se tenta operar em um processo que não existe.</div>
+                    <div class="code-block">import os; os.kill(999999, 9)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ChildProcessError</div>
+                    <div class="error-description">Erro relacionado a um processo filho (ex: falha na criação ou comunicação).</div>
+                    <div class="code-block"># (Uso de multiprocessing/os.wait)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">InterruptedError</div>
+                    <div class="error-description">Uma chamada de sistema foi interrompida por um sinal.</div>
+                    <div class="code-block"># (Sinais; raro em alto nível)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Conexões (Subfamília de OSError) -->
+            <div class="category-card">
+                <h2 class="category-title">Conexões (Subfamília de OSError)</h2>
+                <div class="error-item">
+                    <div class="error-name">ConnectionError</div>
+                    <div class="error-description">Base para erros de conexão de rede.</div>
+                    <div class="code-block">raise ConnectionError("Erro de conexão genérico")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">BrokenPipeError</div>
+                    <div class="error-description">Acontece quando se tenta escrever em um pipe ou soquete que foi fechado pelo outro lado.</div>
+                    <div class="code-block"># (Escrever após fechar pipe)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ConnectionAbortedError</div>
+                    <div class="error-description">Uma conexão foi abortada pelo software host ou pelo sistema operacional.</div>
+                    <div class="code-block"># (Rede)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ConnectionRefusedError</div>
+                    <div class="error-description">Uma tentativa de conexão foi recusada pelo host remoto.</div>
+                    <div class="code-block"># (Rede — porta fechada)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ConnectionResetError</div>
+                    <div class="error-description">Uma conexão foi redefinida pelo par.</div>
+                    <div class="code-block"># (Rede)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Memória -->
+            <div class="category-card">
+                <h2 class="category-title">Memória</h2>
+                <div class="error-item">
+                    <div class="error-name">MemoryError</div>
+                    <div class="error-description">Ocorre quando uma operação não pode ser concluída porque o sistema está sem memória.</div>
+                    <div class="code-block">[0]*10**10 # (Pode travar seu sistema!)</div>
+                </div>
+            </div>
+
+            <!-- Categoria: Avisos (Warnings) -->
+            <div class="category-card">
+                <h2 class="category-title">Avisos (Warnings)</h2>
+                <div class="error-item">
+                    <div class="error-name">Warning</div>
+                    <div class="error-description">Base para classes de avisos. Avisos não interrompem a execução do programa.</div>
+                    <div class="code-block">import warnings; warnings.warn("aviso geral")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UserWarning</div>
+                    <div class="error-description">Aviso genérico gerado por bibliotecas ou pelo usuário para indicar situações não ideais.</div>
+                    <div class="code-block">warnings.warn("Atenção!")</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">DeprecationWarning</div>
+                    <div class="error-description">Avisa que uma funcionalidade está obsoleta e será removida em futuras versões.</div>
+                    <div class="code-block">warnings.warn("deprecado", DeprecationWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">PendingDeprecationWarning</div>
+                    <div class="error-description">Indica que uma funcionalidade será marcada como obsoleta em um futuro próximo.</div>
+                    <div class="code-block"># (Similar ao DeprecationWarning, mas para o futuro)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">SyntaxWarning</div>
+                    <div class="error-description">Avisa sobre sintaxe que parece suspeita, mas não é um erro fatal.</div>
+                    <div class="code-block">warnings.warn("syntax", SyntaxWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">RuntimeWarning</div>
+                    <div class="error-description">Avisa sobre questões que podem surgir durante a execução do programa.</div>
+                    <div class="code-block">warnings.warn("runtime", RuntimeWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">FutureWarning</div>
+                    <div class="error-description">Informa sobre mudanças no comportamento de alguma funcionalidade que ocorrerão no futuro.</div>
+                    <div class="code-block">warnings.warn("futuro", FutureWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ImportWarning</div>
+                    <div class="error-description">Avisa sobre problemas potenciais durante a importação de módulos.</div>
+                    <div class="code-block">warnings.warn("import", ImportWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">UnicodeWarning</div>
+                    <div class="error-description">Avisa sobre problemas potenciais ou operações suspeitas com Unicode.</div>
+                    <div class="code-block">warnings.warn("uni", UnicodeWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">BytesWarning</div>
+                    <div class="error-description">Avisa sobre misturas suspeitas de tipos <code>bytes</code> e <code>str</code> em operações.</div>
+                    <div class="code-block">warnings.warn("bytes", BytesWarning)</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-name">ResourceWarning</div>
+                    <div class="error-description">Avisa que um recurso (como um arquivo) não foi fechado corretamente.</div>
+                    <div class="code-block">open("a.txt"); import gc; gc.collect()</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+            Lembre-se: Pratique rodando os exemplos em um arquivo separado para entender melhor!
+        </div>
+    </div>
+</body>
+</html>
+
