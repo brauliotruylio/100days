@@ -12,7 +12,8 @@ print('''
 ((_________________/_-o___________/_//___/  /\,\  \
  |__/(  ((====)o===--~~                 (  ( (o/)  )
       \  ``==' /                         \  `--'  /
-       `-.__,-'       Vespa P-200 E       `-.__,-''')
+       `-.__,-'       Vespa P-200 E       `-.__,-
+''')
 
 print("Bem vindo ao jogo do tesouro!")
 print("Sua missão é encontrar o tesouro.")
