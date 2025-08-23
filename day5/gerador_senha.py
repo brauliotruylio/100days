@@ -16,10 +16,13 @@ qtd_simbolos = int(input("Quantos símbolos você deseja? "))
 senha_lista = []
 for letra in range(qtd_letras):
     senha_lista.append(random.choice(letras))
+
 for numero in range(qtd_numeros):
     senha_lista.append(random.choice(numeros))
+
 for simbolo in range(qtd_simbolos):
     senha_lista.append(random.choice(simbolos))
+    
 random.shuffle(senha_lista)
 senha = ''.join(senha_lista)
 print(f"Sua senha gerada é: {senha}")
