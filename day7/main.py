@@ -1,5 +1,5 @@
 import random
-from word_list import word_list
+from day7.word_list import word_list
 from forcas_art import stages
 from forcas_art import logo
 
