@@ -1,6 +1,6 @@
 # Blind Auction Project
 
-import art
+import day10.art as art
 
 print(art.logo)
 print("Welcome to the secret auction program.")

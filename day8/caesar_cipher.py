@@ -10,7 +10,7 @@
         # - use o valor de 'direction' para decidir se deve criptografar ou descriptografar a mensagem.
         # - Chame a função caesar() em vez de chamar as funções encrypt() e decrypt() separadamente e passe as 3 entradas, direction, text e shift.
 
-import art
+import day10.art as art
 print(art.logo)
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
