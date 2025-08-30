@@ -1,13 +1,13 @@
 # Criar jogo de adivinhar o número
 
 import art
-import random
+from random import randint
 
 print(art.logo)
 print("Bem-vindo ao jogo de adivinhar o número!")
 print("Estou pensando em um número entre 1 e 100.")
 
-num = random.randint(1, 100)
+num = randint(1, 100)
 nivel = input("Escolha a dificuldade. Digite 'facil' ou 'dificil': ")
 
 if nivel == "facil":
