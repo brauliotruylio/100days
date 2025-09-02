@@ -98,9 +98,9 @@ while is_on:
         # TODO: 2. Checar se os recursos são suficientes
         if recursos_sao_suficientes(drink["ingredientes"]):
             # TODO: 3. Processar moedas
-            pagamento = processar_moedas()
+            payment = processar_moedas()
             # TODO: 4. Checar se a transação foi bem sucedida
-            if transacao_bem_sucedida(pagamento, drink["cost"]):
+            if transacao_bem_sucedida(payment, drink["cost"]):
                 # TODO: 5. Fazer café
                 fazer_cafe(choice, drink["ingredientes"])
     else:
