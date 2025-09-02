@@ -26,19 +26,21 @@ Programação Orientada a Objetos (POO): Classes, objetos, herança e polimorfis
 ## Como Rodar os Projetos
 Clone este repositório para a sua máquina local:
 
-Bash
+```Bash
 
 git clone https://github.com/seu-usuario/seu-repositorio.git
 Navegue até a pasta do dia que você deseja executar:
-
-Bash
+```
+```Bash
 
 cd nome-do-repositorio/dia-XX
 Execute o arquivo Python:
+```
 
-Bash
+```Bash
 
 python nome_do_projeto.py
+```
 
 ## Sobre o Autor
 Nome: Braulio
