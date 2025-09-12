@@ -4,8 +4,7 @@ import pandas
 
 screen = turtle.Screen()
 screen.title("U.S. States Game")
-# Teste definitivo: Usando o caminho absoluto para a imagem
-image = "/media/braulio/Projeto/100days/day25/us-states-game/blank_states_img.gif"
+image = "blank_states_img.gif"
 screen.bgpic(image)
 
 data = pandas.read_csv("50_states.csv")
@@ -20,12 +19,10 @@ while len(guessed_states) < 50:
     answer_state = answer_state.title()
 
     if answer_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
-        new_data = pandas.DataFrame(missing_states)
-        new_data.to_csv("states_to_learn.csv")
+        # Lógica correta e eficiente para salvar os estados faltantes
+        missing_states = [state for state in all_states if state not in guessed_states]
+        new_data = pandas.DataFrame(missing_states, columns=["state"])
+        new_data.to_csv("states_to_learn.csv", index=False)
         break
     if answer_state in all_states:
         guessed_states.append(answer_state)
