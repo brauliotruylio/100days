@@ -19,12 +19,12 @@ while len(guessed_states) < 50:
     answer_state = answer_state.title()
 
     if answer_state == "Exit":
-        # Lógica correta e eficiente para salvar os estados faltantes
+        # Cria uma lista dos estados que faltam e salva em um arquivo CSV.
         missing_states = [state for state in all_states if state not in guessed_states]
         new_data = pandas.DataFrame(missing_states, columns=["state"])
         new_data.to_csv("states_to_learn.csv", index=False)
         break
-    if answer_state in all_states:
+    if answer_state in all_states and answer_state not in guessed_states:
         guessed_states.append(answer_state)
         t = turtle.Turtle()
         t.hideturtle()
