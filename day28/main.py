@@ -1,4 +1,5 @@
 import tkinter as tk
+from pathlib import Path
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -7,7 +8,7 @@ GREEN = "#379b46"
 GREEN_LIGHT = "#9bdeac"
 YELLOW = "#F7F5DD"
 FONT_NAME = "Courier"
-WORK_MIN = 1
+WORK_MIN = 50
 SHORT_BREAK_MIN = 10
 LONG_BREAK_MIN = 50
 reps = 0
@@ -60,7 +61,7 @@ def count_down(count):
         for _ in range(work_sessions):
             marks += "✓"
         check_marks.config(text=marks)
-        
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = tk.Tk()
@@ -70,8 +71,12 @@ window.config(padx=100, pady=50, bg=YELLOW)
 title_label = tk.Label(text="Pomodoro", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 50, "bold"))
 title_label.grid(column=1, row=0)
 
+# Define o caminho para a imagem de forma robusta
+SCRIPT_DIR = Path(__file__).resolve().parent
+IMAGE_PATH = SCRIPT_DIR / "tomato.png"
+
 canvas = tk.Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
-tomate = tk.PhotoImage(file="tomato.png")
+tomate = tk.PhotoImage(file=IMAGE_PATH)
 canvas.create_image(100, 112, image=tomate)  # Placeholder for image
 timer = canvas.create_text(102, 140, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 canvas.grid(column=1, row=1)
